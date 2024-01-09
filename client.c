@@ -6,7 +6,7 @@
 /*   By: bel-barb <bel-barb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:08:11 by bel-barb          #+#    #+#             */
-/*   Updated: 2024/01/09 15:11:34 by bel-barb         ###   ########.fr       */
+/*   Updated: 2024/01/09 21:56:28 by bel-barb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ char	*char_to_binary(unsigned char c)
 		i--;
 		j++;
 	}
-	str[8] = ' ';
 	return (str);
 }
 char    *str_to_binary(char *str)
@@ -51,9 +50,22 @@ char    *str_to_binary(char *str)
 int main()
 {
 	// char	*str2 = str_to_binary("aaaa");
-	int i;
-	scanf("%d", &i);
-	printf("id : %d", i);
-	kill(i, SIGINT);
+	int i = 0;
+	int j = 7;
+	int pid;
+	printf("give me pid : ");
+	scanf("%d", &pid);
+	char *str = str_to_binary("aaaaa");
+	printf("%s", str);
+	while (j >= 0 && str[i] != '\0')
+	{
+		if(str[i] == '1')
+			kill(pid, SIGUSR1);
+		if (str[i] == '0')
+			kill(pid, SIGUSR2);
+		i++;
+		usleep(1000);
+	}
+	printf(" <--- binary sent");
 	return 0;
 }
