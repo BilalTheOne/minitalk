@@ -6,13 +6,12 @@
 /*   By: bel-barb <bel-barb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:08:11 by bel-barb          #+#    #+#             */
-/*   Updated: 2024/01/09 21:56:28 by bel-barb         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:17:53 by bel-barb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft/libft.h"
-#include "ft_printf/ft_printf.h"
 
 char	*char_to_binary(unsigned char c)
 {
@@ -47,15 +46,14 @@ char    *str_to_binary(char *str)
 }
 #include <stdio.h>
 #include <signal.h>
-int main()
+int main(int argc, char *argv[])
 {
-	// char	*str2 = str_to_binary("aaaa");
+	(void)argc;
 	int i = 0;
 	int j = 7;
 	int pid;
-	printf("give me pid : ");
-	scanf("%d", &pid);
-	char *str = str_to_binary("aaaaa");
+	pid = ft_atoi(argv[1]);
+	char *str = str_to_binary(argv[2]);
 	printf("%s", str);
 	while (j >= 0 && str[i] != '\0')
 	{
@@ -66,6 +64,5 @@ int main()
 		i++;
 		usleep(1000);
 	}
-	printf(" <--- binary sent");
 	return 0;
 }
