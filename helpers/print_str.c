@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   print_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-barb <bel-barb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 19:10:05 by bel-barb          #+#    #+#             */
-/*   Updated: 2023/11/09 20:23:48 by bel-barb         ###   ########.fr       */
+/*   Created: 2023/11/12 18:04:10 by bel-barb          #+#    #+#             */
+/*   Updated: 2024/03/27 21:12:11 by bel-barb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	print_str(char *str)
 {
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
+	int	count;
+
+	count = 0;
+	if (str == NULL)
+	{
+		print_str("(null)");
+		return (6);
+	}
+	while (*str)
+	{
+		print_char((int)*str);
+		count++;
+		str++;
+	}
+	return (count);
 }

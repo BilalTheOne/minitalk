@@ -6,11 +6,11 @@
 /*   By: bel-barb <bel-barb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 02:11:27 by bel-barb          #+#    #+#             */
-/*   Updated: 2023/11/14 22:15:28 by bel-barb         ###   ########.fr       */
+/*   Updated: 2024/03/27 20:12:47 by bel-barb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static char	*sp_neg(char *str, int *neg)
 {

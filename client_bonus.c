@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-barb <bel-barb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 10:51:49 by bel-barb          #+#    #+#             */
-/*   Updated: 2024/03/30 00:40:23 by bel-barb         ###   ########.fr       */
+/*   Created: 2024/03/28 03:17:45 by bel-barb          #+#    #+#             */
+/*   Updated: 2024/03/30 00:43:35 by bel-barb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int	bin_to_send(char c, int pid)   
+void	handle_sigusr(int signum)  
+{
+	if (signum == SIGUSR2)
+		write(1, "DONE\n", 5);
+}
+
+int	bin_to_send(char c, int pid)
 {
 	int	i;
 
@@ -49,6 +55,7 @@ int	str_to_char(char *str, int pid)
 		i--;
 		j++;
 	}
+	bin_to_send('\0', pid);
 	return (0);
 }
 
@@ -66,6 +73,7 @@ int	main(int argc, char *argv[])
 	}
 	if (argc == 3)
 	{
+		signal(SIGUSR2, handle_sigusr);
 		if (str_to_char(argv[2], ft_atoi(argv[1])) == -1)
 		{
 			ft_printf("KILL ERROR (check pid validity)");

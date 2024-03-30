@@ -6,51 +6,47 @@
 #    By: bel-barb <bel-barb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/08 15:58:32 by bel-barb          #+#    #+#              #
-#    Updated: 2024/01/10 11:18:58 by bel-barb         ###   ########.fr        #
+#    Updated: 2024/03/28 12:36:06 by bel-barb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: bel-barb <bel-barb@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/08 15:58:32 by bel-barb          #+#    #+#              #
-#    Updated: 2024/01/10 08:38:02 by bel-barb         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = client
+NAME2 = server
 
-SOURCES = server.c client.c
-OBJECTS = $(SOURCES:.c=.o)
+NAME_BONUS = client_bonus
+NAME2_BONUS = server_bonus
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
+SOURCEC = client.c helpers/ft_atoi.c helpers/ft_strlen.c helpers/ft_printf.c helpers/print_num.c helpers/print_str.c helpers/print_hex.c helpers/print_char.c
+SOURCES = server.c helpers/ft_atoi.c helpers/ft_strlen.c helpers/ft_printf.c helpers/print_num.c helpers/print_str.c helpers/print_hex.c helpers/print_char.c
+SOURCEC_BNS = client_bonus.c helpers/ft_atoi.c helpers/ft_strlen.c helpers/ft_printf.c helpers/print_num.c helpers/print_str.c helpers/print_hex.c helpers/print_char.c
+SOURCES_BNS = server_bonus.c helpers/ft_atoi.c helpers/ft_strlen.c helpers/ft_printf.c helpers/print_num.c helpers/print_str.c helpers/print_hex.c helpers/print_char.c
 
-all: server client
+all: $(NAME2) $(NAME)
 
-bonus: server client
+$(NAME2): $(SOURCES) minitalk.h helpers/ft_printf.h
+	$(CC) $(CFLAGS) -o $@ $(SOURCES)
 
-server: server.o libft
-	$(CC) -o $@ $< -Llibft -lft
+$(NAME): $(SOURCEC) minitalk.h helpers/ft_printf.h
+	$(CC) $(CFLAGS) -o $@ $(SOURCEC)
 
-client: client.o libft
-	$(CC) -o $@ $< -Llibft -lft
+$(NAME2_BONUS): $(SOURCES_BNS) minitalk.h helpers/ft_printf.h
+	$(CC) $(CFLAGS) -o $@ $(SOURCES_BNS)
 
-%.o: %.c
-	$(CC) -c $(CFLAGS) $?
-
-libft:
-	make -C libft
+$(NAME_BONUS): $(SOURCEC_BNS) minitalk.h helpers/ft_printf.h
+	$(CC) $(CFLAGS) -o $@ $(SOURCEC_BNS)
 
 clean:
-	rm -f $(OBJECTS)
-	make -C libft clean
+	rm -f server client
+	rm -f server_bonus client_bonus
 	
 fclean: clean
-	rm -f server client libft/libft.a
+	rm -f server client
+	rm -f server_bonus client_bonus
 
 re: fclean all
 
-.PHONY: all bonus libft clean fclean re
+bonus: $(NAME_BONUS) $(NAME2_BONUS)
+
+.PHONY: all clean fclean re

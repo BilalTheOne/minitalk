@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-barb <bel-barb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 02:03:47 by bel-barb          #+#    #+#             */
-/*   Updated: 2023/12/04 18:14:15 by bel-barb         ###   ########.fr       */
+/*   Created: 2023/11/12 21:45:06 by bel-barb          #+#    #+#             */
+/*   Updated: 2024/03/28 11:48:59 by bel-barb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-void	ft_putchar_fd(char c, int fd)
-{
-	if (fd < 0)
-		return ;
-	write(fd, &c, 1);
-}
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdarg.h>
+
+int		ft_printf(const char *format, ...);
+int		print_char(int c);
+int		print_hex(unsigned long n, int c);
+int		print_str(char *str);
+int		print_num(long n);
+int		ft_atoi(const char *str);
+size_t	ft_strlen(const char *s);
+
+#endif
