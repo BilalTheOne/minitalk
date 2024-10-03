@@ -1,52 +1,35 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: bel-barb <bel-barb@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/08 15:58:32 by bel-barb          #+#    #+#              #
-#    Updated: 2024/03/28 12:36:06 by bel-barb         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-NAME = client
-NAME2 = server
-
-NAME_BONUS = client_bonus
-NAME2_BONUS = server_bonus
-
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-SOURCEC = client.c helpers/ft_atoi.c helpers/ft_strlen.c helpers/ft_printf.c helpers/print_num.c helpers/print_str.c helpers/print_hex.c helpers/print_char.c
-SOURCES = server.c helpers/ft_atoi.c helpers/ft_strlen.c helpers/ft_printf.c helpers/print_num.c helpers/print_str.c helpers/print_hex.c helpers/print_char.c
-SOURCEC_BNS = client_bonus.c helpers/ft_atoi.c helpers/ft_strlen.c helpers/ft_printf.c helpers/print_num.c helpers/print_str.c helpers/print_hex.c helpers/print_char.c
-SOURCES_BNS = server_bonus.c helpers/ft_atoi.c helpers/ft_strlen.c helpers/ft_printf.c helpers/print_num.c helpers/print_str.c helpers/print_hex.c helpers/print_char.c
+CFLAGS = -Wall -Wextra -Werror 
+NAME = minishell
+SRC_DIR = . ./libft ./builtin ./parsing
+SRC = $(foreach dir, $(SRC_DIR), $(wildcard $(dir)/*.c))
+OBJ = $(SRC:.c=.o)
+DEPS = minishell.h
+RED=\033[0;31m
+GREEN=\033[0;32m
+NC=\033[0m
 
-all: $(NAME2) $(NAME)
+READLINE = $(shell brew --prefix readline)
 
-$(NAME2): $(SOURCES) minitalk.h helpers/ft_printf.h
-	$(CC) $(CFLAGS) -o $@ $(SOURCES)
+all: $(NAME)
 
-$(NAME): $(SOURCEC) minitalk.h helpers/ft_printf.h
-	$(CC) $(CFLAGS) -o $@ $(SOURCEC)
+$(NAME): $(OBJ)
+	@echo "${GREEN}Creating executable...${NC}"
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L$(READLINE)/lib -lreadline
+	@echo "${GREEN}Executable $(NAME) created.${NC}"
 
-$(NAME2_BONUS): $(SOURCES_BNS) minitalk.h helpers/ft_printf.h
-	$(CC) $(CFLAGS) -o $@ $(SOURCES_BNS)
-
-$(NAME_BONUS): $(SOURCEC_BNS) minitalk.h helpers/ft_printf.h
-	$(CC) $(CFLAGS) -o $@ $(SOURCEC_BNS)
+%.o: %.c $(DEPS)
+	@echo "${GREEN}Compiling $<...${NC}"
+	@$(CC) $(CFLAGS) -I$(READLINE)/include -c $< -o $@
 
 clean:
-	rm -f server client
-	rm -f server_bonus client_bonus
-	
+	@echo "${RED}Cleaning object files...${NC}"
+	@rm -f $(OBJ)
+
 fclean: clean
-	rm -f server client
-	rm -f server_bonus client_bonus
+	@echo "${RED}Cleaning executable...${NC}"
+	@rm -f $(NAME)
 
 re: fclean all
-
-bonus: $(NAME_BONUS) $(NAME2_BONUS)
 
 .PHONY: all clean fclean re

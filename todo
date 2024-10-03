@@ -1,0 +1,4 @@
+export a="      '   n v '      "
+echo "$" expected: $ output: NULL
+export a="'" | echo $a expected bash: ' output: NULL
+=================================================================

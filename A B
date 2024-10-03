@@ -1,0 +1,30 @@
+total 792
+-rw-r--r--   1 bel-barb  candidate     204 Oct  3 16:20 $
+drwxr-xr-x  29 bel-barb  candidate     986 Oct  3 16:59 .
+drwxr-xr-x  19 bel-barb  candidate     646 Oct  2 19:05 ..
+drwxr-xr-x  14 bel-barb  candidate     476 Oct  3 16:07 .git
+-rw-r--r--   1 bel-barb  candidate      40 Aug 26 01:17 .gitignore
+drwxr-xr-x   3 bel-barb  candidate     102 Jul 23 01:04 .vscode
+drwxr-xr-x   3 bel-barb  candidate     102 Sep 28 06:46 1
+-rw-r--r--   1 bel-barb  candidate     202 Oct  3 16:14 4a
+-rw-r--r--   1 bel-barb  candidate       0 Oct  3 17:03 A B
+-rw-r--r--   1 bel-barb  candidate     785 Oct  2 18:23 Makefile
+-rw-r--r--   1 bel-barb  candidate     195 Oct  3 15:59 a b c
+drwxr-xr-x  16 bel-barb  candidate     544 Oct  3 16:20 builtin
+-rwxr-xr-x   1 bel-barb  candidate      53 Sep 30 18:26 check_fd.sh
+-rwxr-xr-x   1 bel-barb  candidate      43 Sep 20 03:08 check_leaks.sh
+-rw-r--r--   1 bel-barb  candidate    8996 Oct  3 15:43 ft_excute.c
+-rw-r--r--   1 bel-barb  candidate   43584 Oct  3 16:20 ft_excute.o
+drwxr-xr-x  47 bel-barb  candidate    1598 Oct  3 16:20 libft
+-rw-r--r--   1 bel-barb  candidate     207 Oct  3 16:34 ls
+-rwxr-xr-x   1 bel-barb  candidate  226992 Oct  3 16:59 minishell
+-rw-r--r--   1 bel-barb  candidate    5532 Oct  3 15:43 minishell.c
+-rw-r--r--   1 bel-barb  candidate    3606 Oct  2 18:51 minishell.h
+-rw-r--r--   1 bel-barb  candidate   27272 Oct  3 16:20 minishell.o
+drwxr-xr-x  25 bel-barb  candidate     850 Oct  3 16:47 minishell_tester
+drwxr-xr-x  12 bel-barb  candidate     408 Oct  3 16:59 parsing
+drwxr-xr-x   7 bel-barb  candidate     238 Sep 27 04:54 test_files
+-rw-r--r--   1 bel-barb  candidate   28594 Sep 21 11:13 tester.py
+-rw-r--r--   1 bel-barb  candidate     185 Sep 27 19:22 todo
+-rw-r--r--   1 bel-barb  candidate    1313 Sep 26 18:46 utils.c
+-rw-r--r--   1 bel-barb  candidate    4244 Oct  3 16:20 utils.o
