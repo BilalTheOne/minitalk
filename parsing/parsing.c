@@ -211,7 +211,7 @@ char **make_tab(char *s, t_env *head, t_command **node)
 				}
 			}
 			if (is_dollar_inside_quotes(argst[z]))
-				args[y] = ft_strdup(expand(argst[z], head));
+				args[y++] = ft_strdup(expand(argst[z], head));
 			else if (!is_dollar_inside_quotes(argst[z]))
 			{
 				int x = 0;
@@ -220,10 +220,9 @@ char **make_tab(char *s, t_env *head, t_command **node)
 			}
 		}
 		else if (!ft_strcmp(argst[z], "<<"))
-			args[y] = ft_strdup(argst[z]);
+			args[y++] = ft_strdup(argst[z]);
 		else
-			args[y] = ft_strdup(expand(argst[z], head));
-		y++;
+			args[y++] = ft_strdup(expand(argst[z], head));
 		z++;
 	}
 	args[y] = NULL;
